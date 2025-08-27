@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Make all children inherit .App font size */
+.App *,
+.App *::before,
+.App *::after {
+  font-size: inherit;
+}
+
+
+App {
+  font-size: 1rem;
+  width: 100%;
+  padding: 0.625rem;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/*MEDIAAAA*/
+
+@media (min-width: 375px) {
+  .App {
+    font-size: 0.15rem;
+  }
+}
+
+/* Small tablets and large phones */
+@media (min-width: 480px) {
+  .App {
+    font-size: 0.25rem;
+  }
+}
+
+/* Tablets (portrait) */
+@media (min-width: 768px) {
+  .App {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .App {
+    width: 75%;
+    max-width: 1000px;
+    font-size: 1.125rem;
+  }
+}
+
+
+/* In SchoolHome.css or App.css */
+
+.content-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Soft dark tint */
+  z-index: 800;
+  pointer-events: none; /* Allow clicks through */
+  transition: opacity 0.3s ease;
+}
