@@ -1,21 +1,24 @@
+/* src/components/Sidebar/SchoolSidebar.css */
 .sidebar {
   position: fixed;
-  top: 54px; /* header height */
+  top: 54px;
   left: 0;
-  width: 70px; 
-  height: calc(100vh - 64px);
+  width: 100%;
+  height: calc(100vh - 54px);
   background-color: #f4f5f7;
   border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
-  z-index: 900;
+  z-index: 1000;
   overflow: hidden;
-  transition: width 0.2s ease;
+  transition: width 0.2s ease, left 0.3s ease;
+  left: 0;
 }
 
 .sidebar.expanded {
-  width: 220px; 
+  width: 220px;
 }
+
 
 .sidebar-nav {
   display: flex;
@@ -49,7 +52,7 @@
 }
 
 .sidebar-icon {
-  margin-left: 10px;  
+  margin-left: 10px;
   font-size: 24px;
   flex-shrink: 0;
 }
@@ -58,16 +61,15 @@
   margin-left: 12px;
   font-size: 16px;
   white-space: nowrap;
-  transition: opacity 0.2s ease;
 }
 
 .sidebar-link.active {
-  background-color: #203061; /* Blue background when active */
-  color: white;              /* Make text/icon white */
+  background-color: #203061;
+  color: white;
 }
 
 .sidebar-link.active .sidebar-icon {
-  color: white; /* Icons also turn white when active */
+  color: white;
 }
 
 .dropdown-toggle {
@@ -76,51 +78,73 @@
   outline: none;
   cursor: pointer;
   width: 100%;
-
 }
 
 .dropdown-icon {
-  margin-left: auto; /* push to right */
+  margin-left: auto;
   font-size: 18px;
   transition: transform 0.2s ease;
 }
 
 .dropdown-icon.open {
-  transform: rotate(180deg); /* rotate when open */
+  transform: rotate(180deg);
+}
+
+.sidebar-submenu {
+  padding-left: 30px;
+  margin-top: 4px;
+}
+
+.sidebar-submenu .sidebar-link {
+  height: 45px;
+  font-size: 0.9rem;
 }
 
 
-
-
 /*smaller device*/
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .sidebar {
     visibility: hidden;
-    width: 100%;
-    position:absolute;
+    left: -300px;
+    width: 300px;
+    position:fixed;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index:999;
+    opacity:0;
+    transform: translateX(-100%);
+    pointer-events: none;
   }
 
   .sidebar.expanded{
     visibility: visible;
-    left:50px;
-    z-index:900;
-    position: absolute;
+    left:0;
+    opacity:1;
+    transform: translateX(0);
+    pointer-events: none;
   }
 }
 
+/*visibility of sidebar*/
 /* === 📱 MOBILE: Drawer Mode === */
-@media (max-width: 768px) {
+ @media (max-width: 768px) { 
   .sidebar {
+    display:block;
     left: -100%;
-    width: 100%;
+    width: 300px;
+    position:fixed;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index:999;
+    opacity:0;
+    transform: translateX(-100%);
+    pointer-events: none;
   }
 
   .sidebar.expanded{
+    visibility: visible;
     left:0;
+    opacity:1;
+    transform: translateX(0);
+    pointer-events: auto;
   }
-
-  .sidebar.mobile-open {
-    left: 0;
-  }
-}
+} 
   

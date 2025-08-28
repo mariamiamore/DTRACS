@@ -2,8 +2,48 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 100px));
   gap: 20px;
-  margin-top: 70px;
+  margin-top: 4rem;
   margin-left: 0;
   padding: 0 40px;
   box-sizing: border-box;
+
+  position:relative;
+
 }
+
+/*MEDIA*/
+
+@media (max-width: 768px) {
+  .section-container { 
+    display: grid;
+    gap: 15px;
+    height: auto;
+    align-content: center;
+    margin-top: 4rem;
+    padding-top:1rem;
+
+    /*changes*/
+    width: auto; /*from 500rem*/
+    grid-template-columns: repeat(auto-fit, minmax(250px, 100px)); /*change from repeat(1, 0)*/ 
+    margin-left:0px; /*replaced from auto auto*/
+
+    /*new added*/
+    max-width:300px;
+    margin-left:16px;
+  }
+}
+
+/* @media (max-width: 520px) {
+  .section-container { 
+    display: grid;
+    grid-template-columns: repeat(1,0);
+    gap: 15px;
+    padding:0 1rem;
+    height: auto;
+    width: 100%;
+    margin:0 1rem;
+    box-sizing: border-box;
+    align-content: center;  
+    margin-top: 4rem;
+  }
+} */
