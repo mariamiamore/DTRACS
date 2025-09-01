@@ -11,6 +11,10 @@ html, body {
   overflow-x: hidden;
 }
 
+html {
+  font-size: 1rem; /* explicitly set root font size */
+}
+
 /* App Header */
 .app-header {
   display: flex;
@@ -210,4 +214,32 @@ hr {
 .dropdown-item svg {
   flex-shrink: 0;
   color: #2196f3;
+}
+
+
+
+@media (max-width: 768px){
+
+/* Avatar Circle with Chevron */
+.header-right{
+  position:relative;
+  max-width: calc(768px - 2rem);
+}
+
+.logo-w-text {
+  position:relative;
+  right:2rem;
+  width: 18rem;
+  height: 3.5rem;
+  object-fit: contain;
+}
+}
+
+@media (max-width: 468px){
+
+.header-right{
+  position:relative;
+  max-width: calc(768px - 2rem);
+  margin-right: 2rem;
+}
 }
