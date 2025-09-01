@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";   // 👈 import useNavigate
 import "./CardLogo.css";
-import BlueLogo from "../../assets/images/sgod-blue.png";
-import WhiteLogo from "../../assets/images/sgod-white.png";
+import SGODBlueLogo from "../../assets/images/sgod-blue.png";
+import SGODWhiteLogo from "../../assets/images/sgod-white.png";
+import CIDBlueLogo from "../../assets/images/cid-blue.png";
+import CIDWhiteLogo from "../../assets/images/cid-white.png";
 
 const CardLogo = () => {
   const [hovered, setHovered] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState(false);
+  const [hoveredOSDS, setHoveredOSDS] = useState(false);
+  const [hoveredCID, setHoveredCID] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -14,7 +17,7 @@ const CardLogo = () => {
     {/* SGOD Card */}
       <div
         className="card"
-        style={{ backgroundImage: `url(${hovered ? WhiteLogo : BlueLogo})` }}
+        style={{ backgroundImage: `url(${hovered ? SGODWhiteLogo : SGODBlueLogo})` }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={() => navigate("/SGOD")}   // 👈 navigate when clicked
@@ -29,14 +32,29 @@ const CardLogo = () => {
     {/* CID Card */}
       <div
         className="card"
-        style={{ backgroundImage: `url(${hoveredCard ? WhiteLogo : BlueLogo})` }}
-        onMouseEnter={() => setHoveredCard(true)}
-        onMouseLeave={() => setHoveredCard(false)}
+        style={{ backgroundImage: `url(${hoveredCID ? CIDWhiteLogo : CIDBlueLogo})` }}
+        onMouseEnter={() => setHoveredCID(true)}
+        onMouseLeave={() => setHoveredCID(false)}
         onClick={() => navigate("/SGOD")}   // navigate to CID page on click
       >
-        <div className={`card-text ${hoveredCard ? "hovered" : ""}`}>
+        <div className={`card-text ${hoveredCID ? "hovered" : ""}`}>
           <h1 className="title">
             Curriculum Implementation <br /> Division
+          </h1>
+        </div>
+      </div>
+
+      {/* OSDS Card */}
+      <div
+        className="card"
+        style={{ backgroundImage: `url(${hoveredOSDS ? SGODWhiteLogo : SGODBlueLogo})` }}
+        onMouseEnter={() => setHoveredOSDS(true)}
+        onMouseLeave={() => setHoveredOSDS(false)}
+        onClick={() => navigate("/SGOD")}   // navigate to CID page on click
+      >
+        <div className={`card-text ${hoveredOSDS ? "hovered" : ""}`}>
+          <h1 className="title">
+            Office of the Schools <br /> Division Superintendent
           </h1>
         </div>
       </div>
