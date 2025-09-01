@@ -11,9 +11,7 @@ html, body {
   overflow-x: hidden;
 }
 
-html {
-  font-size: 1rem; /* explicitly set root font size */
-}
+
 
 /* App Header */
 .app-header {
@@ -29,12 +27,18 @@ html {
   right: 0;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  flex-wrap:nowrap;
 }
 
 /* Left side: menu + logo */
 .header-left {
   display: flex;
   align-items: center;
+
+  gap:1.5rem; /*gap between menu-btn and logo-w-text*/
+  flex-shrink: 1; /* allow shrinking on small screens */
+  min-width: 0; /* prevent overflow issues */
 }
 
 .menu-btn {
@@ -51,6 +55,8 @@ html {
   margin-right: 0.75rem;
   transition: background 0.2s ease;
   border-radius: 6px;
+
+  flex-shrink: 0; /* prevent shrinking */
 }
 
 .menu-btn:hover {
@@ -62,10 +68,15 @@ html {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  min-width: 0; /* to allow shrinking below content size */
+  max-width: 180px; /* max width to scale on small screens */
+  flex-shrink: 1; /* allow shrinking */
 }
 
 .logo-w-text {
-  width: 18rem;
+  max-width: 18rem; /* full width of container */
+  width: 288px;
   height: 3.5rem;
   object-fit: contain;
 }
@@ -73,6 +84,11 @@ html {
 /* Right side: profile */
 .header-right {
   position: relative;
+
+  max-width: 45px; /* width matches profile icon */
+  margin-right: 0; /* reset margin  */
+  flex-shrink: 0; /* prevent shrinking */
+  margin-left:auto; /* push to right */
 }
 
 /* Profile Button Wrapper */
@@ -218,28 +234,22 @@ hr {
 
 
 
-@media (max-width: 768px){
+/* Responsive tweaks for small screens */
+@media (max-width: 480px) {
+  .app-header {
+    padding: 0 0.5rem; /* less padding for small screen */
+  }
 
-/* Avatar Circle with Chevron */
-.header-right{
-  position:relative;
-  max-width: calc(768px - 2rem);
+  .header-logo-container {
+    max-width: 220px; /* smaller logo container */
+  }
+
+  .profile-btn {
+    margin-right: 0; /* remove margin */
+  }
+
+  .header-left {
+    gap: 0.5rem; /* smaller gap on small screens */
+  }
 }
 
-.logo-w-text {
-  position:relative;
-  right:2rem;
-  width: 18rem;
-  height: 3.5rem;
-  object-fit: contain;
-}
-}
-
-@media (max-width: 468px){
-
-.header-right{
-  position:relative;
-  max-width: calc(768px - 2rem);
-  margin-right: 2rem;
-}
-}
